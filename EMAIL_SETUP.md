@@ -59,6 +59,7 @@ src/
 
 public/
 ├── checkout.php           # Updated to send order confirmation emails
+├── test-email.php         # Email testing interface for admins
 └── admin/
     └── orders.php         # Updated to send status update emails
 
@@ -68,11 +69,11 @@ logs/
 
 ## 🧪 Testing Emails
 
-### Using the Email System
+### Using the Test Interface
 1. Login as admin
-2. Go to admin panel → Orders
-3. Update order status to automatically send status update emails
-4. Check `logs/emails.log` to see the email content (in debug mode)
+2. Go to `http://localhost:8000/test-email.php`
+3. Test both order confirmation and status update emails
+4. Check `logs/emails.log` to see the email content
 
 ### Manual Testing
 ```php
@@ -224,7 +225,8 @@ mailq
 ## 🎯 Quick Start
 
 1. **Development**: Keep `EMAIL_DEBUG = true` and check `logs/emails.log`
-2. **Production**: Set `EMAIL_DEBUG = false` and configure mail server
-3. **Monitoring**: Check logs for email delivery status
+2. **Testing**: Use `/test-email.php` to test email templates
+3. **Production**: Set `EMAIL_DEBUG = false` and configure mail server
+4. **Monitoring**: Check logs for email delivery status
 
 Your email notification system is now ready to keep customers informed about their orders! 📧✨

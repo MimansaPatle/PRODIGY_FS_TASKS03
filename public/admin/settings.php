@@ -76,6 +76,11 @@ requireAdmin();
                             <?= (defined('USE_SMTP') && USE_SMTP) ? 'ON' : 'OFF' ?>
                         </div>
                     </div>
+                    <div class="mt-4">
+                        <a href="../test-email.php" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm">
+                            Test Email System
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -98,26 +103,22 @@ requireAdmin();
                 </div>
             </div>
 
-            <!-- System Information -->
+            <!-- System Tools -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4">System Information</h2>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">PHP Version</label>
-                        <div class="text-gray-900"><?= phpversion() ?></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Server Software</label>
-                        <div class="text-gray-900"><?= $_SERVER['SERVER_SOFTWARE'] ?? 'Unknown' ?></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Upload Max Size</label>
-                        <div class="text-gray-900"><?= ini_get('upload_max_filesize') ?></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Memory Limit</label>
-                        <div class="text-gray-900"><?= ini_get('memory_limit') ?></div>
-                    </div>
+                <h2 class="text-xl font-bold mb-4">System Tools</h2>
+                <div class="space-y-3">
+                    <a href="../test-db.php" class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-center">
+                        Test Database Connection
+                    </a>
+                    <a href="../test-email.php" class="block w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-center">
+                        Test Email System
+                    </a>
+                    <a href="../check-mailhog.php" class="block w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center">
+                        Check MailHog Status
+                    </a>
+                    <a href="../view-email-logs.php" class="block w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-center">
+                        View Email Logs
+                    </a>
                 </div>
             </div>
         </div>

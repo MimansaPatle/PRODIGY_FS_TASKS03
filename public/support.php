@@ -116,28 +116,7 @@ $currentUser = getCurrentUser();
             </div>
 
             <!-- Support Options Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Live Chat -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center hover:shadow-md transition-shadow duration-200">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Live Chat</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Get instant help from our support team. We're available during business hours to answer your questions.
-                    </p>
-                    <div class="text-sm text-gray-500 mb-6">
-                        <p class="font-medium">Available:</p>
-                        <p>Mon-Fri: 9:00 AM - 6:00 PM</p>
-                        <p>Sat: 10:00 AM - 4:00 PM</p>
-                    </div>
-                    <button onclick="startLiveChat()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
-                        Start Chat
-                    </button>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                 <!-- Call Store -->
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center hover:shadow-md transition-shadow duration-200">
@@ -152,10 +131,12 @@ $currentUser = getCurrentUser();
                     </p>
                     <div class="text-sm text-gray-500 mb-6">
                         <p class="font-medium">Phone Number:</p>
-                        <p class="text-lg font-semibold text-emerald-600">+1 (555) LOCAL-88</p>
-                        <p class="mt-2">Same hours as Live Chat</p>
+                        <p class="text-lg font-semibold text-emerald-600">+91 8735028305</p>
+                        <p class="mt-2 font-medium">Business Hours:</p>
+                        <p>Mon-Sat: 9:00 AM - 8:00 PM</p>
+                        <p>Sun: 10:00 AM - 6:00 PM</p>
                     </div>
-                    <a href="tel:+15555622588" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                    <a href="tel:+918735028305" class="inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
                         Call Now
                     </a>
                 </div>
@@ -174,12 +155,13 @@ $currentUser = getCurrentUser();
                     </p>
                     <div class="text-sm text-gray-500 mb-6">
                         <p class="font-medium">Address:</p>
-                        <p>123 Market Row</p>
-                        <p>Springfield</p>
+                        <p>Shop No. 15, Gandhi Market</p>
+                        <p>MG Road, Sector 14</p>
+                        <p>Gurgaon, Haryana 122001</p>
                         <p class="mt-2">
                             <span class="font-medium">Store Hours:</span><br>
-                            Mon-Sat: 8:00 AM - 8:00 PM<br>
-                            Sun: 10:00 AM - 6:00 PM
+                            Mon-Sat: 8:00 AM - 9:00 PM<br>
+                            Sun: 9:00 AM - 8:00 PM
                         </p>
                     </div>
                     <button onclick="openDirections()" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
@@ -195,22 +177,32 @@ $currentUser = getCurrentUser();
                     
                     <div class="p-6">
                         <h3 class="font-semibold text-gray-800 mb-2">What are your delivery hours?</h3>
-                        <p class="text-gray-600">We deliver Monday through Saturday from 9:00 AM to 7:00 PM, and Sunday from 11:00 AM to 5:00 PM.</p>
+                        <p class="text-gray-600">We deliver Monday through Saturday from 9:00 AM to 8:00 PM, and Sunday from 10:00 AM to 6:00 PM across Gurgaon and nearby areas.</p>
                     </div>
                     
                     <div class="p-6">
                         <h3 class="font-semibold text-gray-800 mb-2">Do you offer same-day delivery?</h3>
-                        <p class="text-gray-600">Yes! Orders placed before 2:00 PM can be delivered the same day within our delivery zone.</p>
+                        <p class="text-gray-600">Yes! Orders placed before 2:00 PM can be delivered the same day within Gurgaon city limits. Delivery charges may apply.</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="font-semibold text-gray-800 mb-2">What payment methods do you accept?</h3>
+                        <p class="text-gray-600">We accept Cash on Delivery (COD), UPI payments, bank transfers, and WhatsApp Pay for your convenience.</p>
                     </div>
                     
                     <div class="p-6">
                         <h3 class="font-semibold text-gray-800 mb-2">What's your return policy?</h3>
-                        <p class="text-gray-600">We offer a 100% satisfaction guarantee. If you're not happy with any product, contact us within 24 hours for a full refund or replacement.</p>
+                        <p class="text-gray-600">We offer a 100% satisfaction guarantee on fresh products. If you're not happy with any item, contact us within 24 hours for a full refund or replacement.</p>
                     </div>
                     
                     <div class="p-6">
                         <h3 class="font-semibold text-gray-800 mb-2">How do I track my order?</h3>
-                        <p class="text-gray-600">You can track your order using our <a href="track-order.php" class="text-emerald-600 hover:text-emerald-700 font-medium">Track Order</a> page with your order number.</p>
+                        <p class="text-gray-600">You can track your order using our <a href="track-order.php" class="text-emerald-600 hover:text-emerald-700 font-medium">Track Order</a> page with your order number and registered mobile number.</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="font-semibold text-gray-800 mb-2">Do you deliver to my area?</h3>
+                        <p class="text-gray-600">We currently deliver across Gurgaon, including Sector 14, DLF Phase 1-5, Cyber City, and surrounding areas. Call us to check if we deliver to your location.</p>
                     </div>
                 </div>
             </div>
@@ -218,14 +210,9 @@ $currentUser = getCurrentUser();
     </div>
 
     <script>
-        function startLiveChat() {
-            // In a real implementation, this would open a chat widget
-            alert('Live chat feature coming soon! Please call us at +1 (555) LOCAL-88 for immediate assistance.');
-        }
-
         function openDirections() {
             // Open Google Maps with the store address
-            const address = encodeURIComponent('123 Market Row, Springfield');
+            const address = encodeURIComponent('Shop No. 15, Gandhi Market, MG Road, Sector 14, Gurgaon, Haryana 122001');
             window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
         }
 

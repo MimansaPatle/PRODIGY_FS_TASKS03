@@ -63,18 +63,14 @@ A modern, full-featured e-commerce platform built with PHP for local grocery sto
 
 3. **Configure the application**
    ```bash
-   # Copy the example configuration
+   # Copy and edit configuration
    cp src/config.php.example src/config.php
-   
-   # Edit src/config.php with your settings:
-   # - Database credentials
-   # - Email configuration
-   # - Site URL and name
+   # Edit src/config.php with your database credentials and settings
    ```
 
 4. **Set up file permissions**
    ```bash
-   chmod 755 public/uploads/products/
+   chmod 755 public/uploads/
    chmod 755 logs/
    ```
 
@@ -88,21 +84,7 @@ A modern, full-featured e-commerce platform built with PHP for local grocery sto
    - Visit your domain to see the storefront
    - Access admin panel at `/admin/`
 
-## 🔒 Security & Configuration
-
-### Important Security Notes
-- **NEVER commit `src/config.php` to version control** - it contains sensitive data
-- Always use `src/config.php.example` as a template for your configuration
-- Update database credentials, email settings, and API keys in your local `src/config.php`
-- The `.gitignore` file is configured to exclude sensitive files automatically
-
-### Production Deployment Checklist
-- [ ] Set `EMAIL_DEBUG = false` for production email sending
-- [ ] Set `error_reporting(0)` and `ini_set('display_errors', 0)` for production
-- [ ] Configure HTTPS for secure connections
-- [ ] Update all placeholder credentials with real values
-- [ ] Test email functionality with real SMTP settings
-- [ ] Regularly update PHP version and dependencies
+For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
 
 ## � Project Structure
 
@@ -134,9 +116,9 @@ define('DB_PASS', 'your_password');
 ### Email Configuration
 Configure email settings in `src/config.php`:
 ```php
-define('SMTP_HOST', 'your-smtp-host');
-define('SMTP_USER', 'your-email@domain.com');
-define('SMTP_PASS', 'your-password');
+define('ADMIN_EMAIL', 'admin@yourstore.com');
+define('SMTP_USER', 'your-email@gmail.com');
+define('SMTP_PASSWORD', 'your-app-password');
 ```
 
 ## � Admin Panel

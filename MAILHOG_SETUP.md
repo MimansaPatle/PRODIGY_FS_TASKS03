@@ -86,10 +86,9 @@ define('EMAIL_DEBUG', false); // Set to false to actually send emails
 ```
 
 ### **3. Test Email Sending**
-1. Place a test order through the checkout process
-2. Make sure `EMAIL_DEBUG` is set to `true` in config.php
-3. Check `logs/emails.log` to see if emails are being generated
-4. If using MailHog, check the web interface at http://localhost:8025
+1. Go to: http://localhost:8000/test-email.php
+2. Make sure it shows "Debug Mode: OFF"
+3. Enter any email address (e.g., `test@example.com`)
 4. Click "Send Order Confirmation Email"
 5. Go to MailHog interface: http://localhost:8025
 6. You should see your email!
@@ -226,7 +225,7 @@ php -i | grep -i mail
 - [ ] MailHog installed and running
 - [ ] PHP configured to use localhost:1025
 - [ ] MailHog web interface accessible (http://localhost:8025)
-- [ ] Test order placed and email generated
+- [ ] Test email sent from `/test-email.php`
 - [ ] Email appears in MailHog interface
 - [ ] Order confirmation email tested
 - [ ] Status update email tested

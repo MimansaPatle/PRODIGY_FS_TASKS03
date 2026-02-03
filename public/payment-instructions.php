@@ -93,7 +93,7 @@ unset($_SESSION['payment_instructions']);
                     <div class="border border-gray-200 rounded-lg p-4">
                         <h4 class="font-medium text-gray-800 mb-2">🔸 UPI Payment (Recommended)</h4>
                         <div class="bg-gray-50 p-3 rounded font-mono text-sm">
-                            <strong>UPI ID:</strong> localpantry@upi<br>
+                            <strong>UPI ID:</strong> vaghelatirth719@oksbi<br>
                             <strong>Name:</strong> Local Pantry Store
                         </div>
                         <p class="text-sm text-gray-600 mt-2">Use any UPI app: PhonePe, Paytm, Google Pay, etc.</p>

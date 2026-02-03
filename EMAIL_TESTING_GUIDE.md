@@ -1,35 +1,32 @@
 # 📧 Email Testing Guide
 
-This guide will help you test the email functionality in your Local Pantry e-commerce platform.
+This guide will help you test that emails are actually being sent to user email addresses.
 
 ## 🧪 **Testing Methods**
 
-### **Method 1: Order Confirmation Emails**
+### **Method 1: Using the Enhanced Test Interface**
 
-1. **Place a Test Order**
-   - Go through the complete checkout process
-   - Use a real email address for testing
-   - Complete the order placement
+1. **Access the Test Page**
+   ```
+   http://localhost:8000/test-email.php
+   ```
+   (Login as admin first)
 
-2. **Check Email Delivery**
+2. **Switch to Live Email Mode**
+   - Click "Switch to Live Email Mode" button
+   - This changes `EMAIL_DEBUG` from `true` to `false`
+
+3. **Test Order Confirmation Email**
+   - Enter your real email address
+   - Enter a test customer name
+   - Click "Send Order Confirmation Email"
    - Check your email inbox (and spam folder)
-   - Verify the order confirmation email was received
-   - Review the email content for accuracy
 
-### **Method 2: Order Status Update Emails**
-
-1. **Access Admin Panel**
-   - Login as admin
-   - Navigate to Orders section
-
-2. **Update Order Status**
-   - Find any existing order
-   - Change the status (pending → processing → shipped → delivered)
-   - Customer will automatically receive status update email
-
-3. **Verify Email Content**
-   - Check that the email contains correct order information
-   - Verify status change is clearly communicated
+4. **Test Status Update Email**
+   - Enter your real email address
+   - Select old and new status
+   - Click "Send Status Update Email"
+   - Check your email inbox
 
 ### **Method 2: Test Through Real User Flow**
 
@@ -54,11 +51,11 @@ This guide will help you test the email functionality in your Local Pantry e-com
 
 ### **Method 3: Manual PHP Testing**
 
-Create a simple test script if needed:
+Create a simple test script:
 
 ```php
 <?php
-// manual-email-test.php
+// test-manual-email.php
 require_once 'src/config.php';
 require_once 'src/email.php';
 
@@ -305,8 +302,8 @@ When testing, you should receive emails that look like this:
 
 ## 🎯 **Quick Start Testing**
 
-1. **Configure Email Settings**: Set `EMAIL_DEBUG = false` in `src/config.php` for live email sending
-2. **Test Order Email**: Place a test order through the checkout process
+1. **Enable Live Email Mode**: Go to `/test-email.php` → Click "Switch to Live Email Mode"
+2. **Test Order Email**: Enter your email → Click "Send Order Confirmation Email"
 3. **Check Your Inbox**: Look for professional email from Local Pantry
 4. **Test Status Email**: Enter your email → Click "Send Status Update Email"
 5. **Verify Delivery**: Check both emails arrived and look professional
