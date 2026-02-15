@@ -1,43 +1,42 @@
 <?php
 // Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'local_pantry');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
+define('DB_NAME', 'local_store_db');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 // Site Configuration
-define('SITE_NAME', 'Local Pantry');
+define('SITE_NAME', 'FreshVault');
 define('SITE_URL', 'http://localhost:8000');
-define('ADMIN_EMAIL', 'admin@localpantry.com');
+define('ADMIN_URL', SITE_URL . '/admin/');
 
 // Email Configuration
-define('EMAIL_DEBUG', true);        // Set to false in production
-define('USE_SMTP', false);          // Set to true for production
-define('USE_MAILHOG', false);       // Set to true for local testing
+define('ADMIN_EMAIL', 'your-email@gmail.com');
+define('EMAIL_DEBUG', false);
 
-// SMTP Settings (for production)
-define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_PORT', 465);
-define('SMTP_USER', 'your-email@gmail.com');
-define('SMTP_PASS', 'your-app-password');
+// SMTP Configuration
+define('USE_SMTP', true);
+define('SMTP_PASSWORD', 'your-app-password-here'); // Gmail App Password (16 characters)
+define('USE_MAILHOG', false);
 
-// Security Settings
-define('SESSION_LIFETIME', 3600);   // 1 hour
-define('MAX_LOGIN_ATTEMPTS', 5);
+// Payment Gateway Configuration (Razorpay)
+// Get your keys from https://razorpay.com
+define('RAZORPAY_KEY_ID', 'your-razorpay-key-id');
+define('RAZORPAY_KEY_SECRET', 'your-razorpay-key-secret');
+define('PAYMENT_ENABLED', false); // Set to true after adding real keys
+define('UPLOAD_DIR', __DIR__ . '/../public/uploads/products/');
+define('UPLOAD_URL', '/uploads/products/');
 
-// File Upload Settings
-define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5MB
-define('ALLOWED_IMAGE_TYPES', ['jpg', 'jpeg', 'png', 'gif', 'webp']);
-
-// Payment Configuration
-define('PAYMENT_ENABLED', false);   // Set to true when ready
-define('RAZORPAY_KEY_ID', 'your_razorpay_key');
-define('RAZORPAY_KEY_SECRET', 'your_razorpay_secret');
-
-// Timezone
-date_default_timezone_set('Asia/Kolkata');
+// Session Configuration
+ini_set('session.cookie_httponly', 1);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Error Reporting (disable in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+// Timezone
+date_default_timezone_set('Asia/Kolkata');
 ?>
