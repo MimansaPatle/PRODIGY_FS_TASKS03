@@ -32,7 +32,9 @@ $pendingOrder = $_SESSION['pending_order'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Payment - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/toast.js"></script>
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/override.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
@@ -157,12 +159,12 @@ $pendingOrder = $_SESSION['pending_order'];
                     if (data.success) {
                         window.location.href = 'payment-success.php?order_id=<?= $pendingOrder['order_id'] ?>';
                     } else {
-                        alert('Payment verification failed: ' + data.message);
+                        toast.error('Payment verification failed: ' + data.message);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Payment processing error. Please contact support.');
+                    toast.error('Payment processing error. Please contact support.');
                 });
             },
             'prefill': {
@@ -206,7 +208,7 @@ $pendingOrder = $_SESSION['pending_order'];
             originalInitiatePayment();
         } catch (error) {
             hideLoading();
-            alert('Payment initialization failed. Please try again.');
+            toast.error('Payment initialization failed. Please try again.');
         }
     };
     </script>

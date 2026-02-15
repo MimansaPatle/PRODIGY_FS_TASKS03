@@ -7,6 +7,8 @@ require_once __DIR__ . '/../../src/email.php';
 
 requireAdmin();
 
+$currentPage = 'orders';
+
 $message = '';
 $error = '';
 
@@ -67,48 +69,12 @@ $orderStats = Order::getOrderStats();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Management - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/custom.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
-        <div class="w-full px-6">
-            <div class="relative flex items-center h-16">
-                <!-- Logo - Left Side -->
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"></path>
-                        </svg>
-                    </div>
-                    <h1 class="text-xl font-bold text-gray-800 tracking-wide">ADMIN - ORDERS</h1>
-                </div>
+<body class="bg-gray-50 font-['Inter']">
+    <?php include __DIR__ . '/../../src/includes/admin-sidebar.php'; ?>
 
-                <!-- Navigation - Right Side -->
-                <div class="ml-auto flex items-center space-x-4">
-                    <a href="index.php" class="text-gray-500 hover:text-gray-700 font-medium">Dashboard</a>
-                    <a href="products.php" class="text-gray-500 hover:text-gray-700 font-medium">Products</a>
-                    <a href="../index.php" class="text-gray-500 hover:text-gray-700 font-medium">View Store</a>
-                    <a href="../logout.php" class="text-gray-500 hover:text-gray-700 font-medium">Logout</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="w-full px-6 py-8">
+    <main class="lg:ml-72 min-h-screen p-6">
         <div class="max-w-7xl mx-auto">
             
             <!-- Page Header -->
@@ -132,7 +98,7 @@ $orderStats = Order::getOrderStats();
 
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-blue-100 text-blue-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +112,7 @@ $orderStats = Order::getOrderStats();
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +126,7 @@ $orderStats = Order::getOrderStats();
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +140,7 @@ $orderStats = Order::getOrderStats();
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-purple-100 text-purple-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -190,7 +156,7 @@ $orderStats = Order::getOrderStats();
             </div>
 
             <!-- Filters -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
                 <form method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Status Filter -->
                     <div>
@@ -240,7 +206,7 @@ $orderStats = Order::getOrderStats();
             </div>
 
             <!-- Orders Table -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b border-gray-200">
@@ -327,12 +293,12 @@ $orderStats = Order::getOrderStats();
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Order Details Modal -->
     <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
                         <h2 id="orderModalTitle" class="text-2xl font-bold text-gray-800">Order Details</h2>
@@ -354,7 +320,7 @@ $orderStats = Order::getOrderStats();
     <!-- Status Update Modal -->
     <div id="statusModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg max-w-md w-full">
+            <div class="bg-white rounded-2xl max-w-md w-full">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Update Order Status</h3>
                     

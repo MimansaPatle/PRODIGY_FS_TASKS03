@@ -7,6 +7,8 @@ require_once __DIR__ . '/../../src/models/User.php';
 
 requireAdmin();
 
+$currentPage = 'reports';
+
 // Get basic stats
 $totalOrders = Order::getCount();
 $totalRevenue = Order::getTotalRevenue();
@@ -23,32 +25,20 @@ $recentOrders = Order::getAll(['limit' => 10]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/custom.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-    <?php include __DIR__ . '/../../src/includes/admin-header.php'; ?>
+<body class="bg-gray-50 font-['Inter']">
+    <?php include __DIR__ . '/../../src/includes/admin-sidebar.php'; ?>
 
-    <div class="container mx-auto px-4 py-8">
+    <main class="lg:ml-72 min-h-screen p-6">
+        <div class="max-w-7xl mx-auto">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Reports & Analytics</h1>
-            <a href="index.php" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">← Back to Dashboard</a>
         </div>
 
         <!-- Summary Stats -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <div class="flex items-center">
                     <div class="p-3 rounded-full bg-green-100 text-green-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,7 +52,7 @@ $recentOrders = Order::getAll(['limit' => 10]);
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <div class="flex items-center">
                     <div class="p-3 rounded-full bg-blue-100 text-blue-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +66,7 @@ $recentOrders = Order::getAll(['limit' => 10]);
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <div class="flex items-center">
                     <div class="p-3 rounded-full bg-purple-100 text-purple-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +80,7 @@ $recentOrders = Order::getAll(['limit' => 10]);
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <div class="flex items-center">
                     <div class="p-3 rounded-full bg-orange-100 text-orange-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +96,7 @@ $recentOrders = Order::getAll(['limit' => 10]);
         </div>
 
         <!-- Recent Orders -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="bg-white rounded-2xl shadow-lg p-6">
             <h2 class="text-xl font-bold mb-4">Recent Orders</h2>
             
             <?php if (empty($recentOrders)): ?>
@@ -169,6 +159,7 @@ $recentOrders = Order::getAll(['limit' => 10]);
             </div>
             <?php endif; ?>
         </div>
-    </div>
+        </div>
+    </main>
 </body>
 </html>

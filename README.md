@@ -1,217 +1,228 @@
-# 🛒 LOCAL PANTRY - E-Commerce Platform
+# PRODIGY_FS_TASK03
 
-A modern, full-featured e-commerce platform built with PHP for local grocery stores and small businesses.
+## E-Commerce Store - FreshVault
 
-![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-5.7+-4479A1?style=flat&logo=mysql&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0+-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+A modern, full-featured e-commerce web application built with PHP, MySQL, and Tailwind CSS. This project features a complete online store with user authentication, shopping cart, order management, payment integration, and a comprehensive admin panel.
 
-## ✨ Features
+## 🚀 Features
 
-### 🛍️ Customer Features
-- **Modern Storefront** - Beautiful, responsive design with hero section
-- **Product Catalog** - Browse products by categories with search and filters
-- **Shopping Cart** - Add/remove items with quantity management
-- **Wishlist System** - Save favorite products for later with database persistence
-- **User Accounts** - Registration, login, and profile management
-- **Password Reset** - Secure email-based password reset functionality
-- **Multiple Payment Options** - Cash on Delivery, Bank Transfer, WhatsApp Pay
-- **Order Tracking** - Real-time order status updates
-- **Mobile Responsive** - Optimized for all devices
+### Customer Features
+- **User Authentication**: Secure registration, login, and password reset
+- **Product Browsing**: Browse products by category with search functionality
+- **Shopping Cart**: Add/remove items, update quantities
+- **Wishlist**: Save favorite products for later
+- **Order Management**: Place orders, track status, view order history
+- **User Profile**: Manage personal information and addresses
+- **Payment Integration**: Razorpay payment gateway support
+- **Email Notifications**: Order confirmations and status updates
 
-### 🏪 Admin Panel
-- **Dashboard** - Overview with key business metrics and analytics
-- **Product Management** - Full CRUD operations with image upload
-- **Inventory Management** - Stock tracking with low stock alerts and bulk updates
-- **Order Management** - Process orders, update status, and view detailed order information
-- **Customer Management** - View customer data and activity
-- **Analytics & Reports** - Interactive sales charts, revenue tracking, top products
-- **Category Management** - Organize products efficiently
+### Admin Features
+- **Dashboard**: Overview of store statistics and metrics
+- **Product Management**: Add, edit, delete products with image uploads
+- **Category Management**: Organize products into categories
+- **Order Management**: View and update order statuses
+- **Customer Management**: View customer information
+- **Inventory Tracking**: Monitor stock levels
+- **Analytics**: Sales reports and performance metrics
+- **Settings**: Configure store settings
 
-### 🔧 Technical Features
-- **MVC Architecture** - Clean, maintainable code structure
-- **Secure Authentication** - Password hashing and session management
-- **Email System** - Order confirmations, status updates, and password reset
-- **Image Management** - Upload, resize, and optimize product images
-- **Database Migrations** - Version-controlled database schema
-- **Responsive Design** - TailwindCSS for modern UI
-- **AJAX Integration** - Smooth user experience with real-time updates
+## 🎨 Design
 
-## 🚀 Quick Start
+- **Modern UI**: Clean, responsive design using Tailwind CSS
+- **Purple Theme**: User-facing pages with indigo gradient sidebar
+- **Pink Theme**: Admin panel with pink/rose gradient sidebar
+- **Mobile Responsive**: Fully responsive with slide-in navigation
+- **Toast Notifications**: User-friendly feedback system
 
-### Prerequisites
+## 📋 Prerequisites
+
 - PHP 8.0 or higher
 - MySQL 5.7 or higher
-- Web server (Apache/Nginx)
-- Composer (optional)
+- Web server (Apache/Nginx) or PHP built-in server
+- Composer (optional, for dependencies)
 
-### Installation
+## 🛠️ Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/local-pantry.git
-   cd local-pantry
-   ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/MimansaPatle/PRODIGY_FS_TASKS03.git
+cd PRODIGY_FS_TASKS03
+```
 
-2. **Set up the database**
-   ```bash
-   # Create a MySQL database
-   mysql -u root -p -e "CREATE DATABASE local_pantry;"
-   
-   # Import the schema
-   mysql -u root -p local_pantry < database/schema.sql
-   
-   # Run migrations for additional features
-   mysql -u root -p local_pantry < database/wishlist-migration.sql
-   mysql -u root -p local_pantry < database/password-reset-migration.sql
-   ```
+### 2. Database Setup
+```bash
+# Create database
+mysql -u root -p
+CREATE DATABASE local_store_db;
+exit;
 
-3. **Configure the application**
-   ```bash
-   # Copy and edit configuration
-   cp src/config.php.example src/config.php
-   # Edit src/config.php with your database credentials and settings
-   ```
+# Import schema
+mysql -u root -p local_store_db < database/schema.sql
+```
 
-4. **Set up file permissions**
-   ```bash
-   chmod 755 public/uploads/
-   chmod 755 logs/
-   ```
+### 3. Configuration
+```bash
+# Copy example config
+cp src/config.php.example src/config.php
 
-5. **Create admin account**
-   - Visit `/register.php` and create your first account
-   - Manually update the user role to 'admin' in the database
-   - Or create an admin creation script based on your needs
+# Edit src/config.php with your settings:
+# - Database credentials
+# - Email settings (Gmail App Password)
+# - Razorpay API keys (for payments)
+```
 
-6. **Start the application**
-   - Point your web server to the `public/` directory
-   - Visit your domain to see the storefront
-   - Access admin panel at `/admin/`
+### 4. Run Migrations
+```bash
+php setup-database.php
+php run-migrations.php
+```
+
+### 5. Create Admin User
+```bash
+php create-admin.php
+# Default: admin@localstore.com / admin123
+```
+
+### 6. Start Server
+```bash
+# Windows
+start-server.bat
+
+# Linux/Mac
+php -S localhost:8000 -t public
+```
+
+### 7. Access Application
+- **Store**: http://localhost:8000
+- **Admin Panel**: http://localhost:8000/admin/
+- **Admin Login**: admin@localstore.com / admin123
 
 ## 📁 Project Structure
 
 ```
-local-pantry/
-├── public/                 # Web root
-│   ├── admin/             # Admin panel
-│   ├── assets/            # CSS, JS, images
-│   └── uploads/           # User uploaded files
-├── src/                   # Application source
-│   ├── models/            # Data models
-│   ├── includes/          # Shared components
-│   └── *.php             # Core application files
-├── database/              # Database schema and migrations
-├── logs/                  # Application logs
-└── docs/                  # Documentation
+PRODIGY_FS_TASK03/
+├── database/           # SQL schema and migrations
+├── logs/              # Application logs
+├── public/            # Public web root
+│   ├── admin/         # Admin panel pages
+│   ├── assets/        # CSS, JS, images
+│   └── uploads/       # Product images
+├── src/               # Core application code
+│   ├── includes/      # Reusable components
+│   ├── models/        # Database models
+│   ├── auth.php       # Authentication
+│   ├── cart.php       # Shopping cart logic
+│   ├── config.php     # Configuration (not in repo)
+│   ├── db.php         # Database connection
+│   └── email.php      # Email service
+└── README.md
 ```
 
-## ⚙️ Configuration
+## 🔧 Configuration
 
-### Database Configuration
-Edit `src/config.php`:
+### Email Setup (Gmail)
+1. Enable 2-Factor Authentication in Gmail
+2. Generate App Password: https://myaccount.google.com/apppasswords
+3. Update `src/config.php`:
 ```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'your_database_name');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
+define('ADMIN_EMAIL', 'your-email@gmail.com');
+define('SMTP_PASSWORD', 'your-16-char-app-password');
 ```
 
-### Email Configuration
-Configure email settings in `src/config.php`:
+### Payment Setup (Razorpay)
+1. Sign up at https://razorpay.com
+2. Get API keys from Dashboard
+3. Update `src/config.php`:
 ```php
-define('ADMIN_EMAIL', 'your-email@example.com');
-define('USE_SMTP', true);
-define('SMTP_PASSWORD', 'your-app-password');
-```
-
-### Payment Configuration
-For Razorpay integration:
-```php
-define('RAZORPAY_KEY_ID', 'your_key_id');
-define('RAZORPAY_KEY_SECRET', 'your_key_secret');
+define('RAZORPAY_KEY_ID', 'your-key-id');
+define('RAZORPAY_KEY_SECRET', 'your-key-secret');
 define('PAYMENT_ENABLED', true);
 ```
 
-## 🛡️ Security Features
+## 🎯 Usage
 
-- Password hashing with PHP's `password_hash()`
+### Customer Workflow
+1. Browse products on homepage
+2. Add items to cart or wishlist
+3. Register/Login
+4. Proceed to checkout
+5. Enter shipping details
+6. Complete payment
+7. Track order status
+
+### Admin Workflow
+1. Login to admin panel
+2. Add products and categories
+3. Manage inventory
+4. Process orders
+5. Update order statuses
+6. View analytics and reports
+
+## 🔐 Security Features
+
+- Password hashing with bcrypt
 - SQL injection prevention with prepared statements
-- XSS protection with input sanitization
+- XSS protection with htmlspecialchars
 - CSRF protection for forms
-- Secure session management
-- File upload validation
-- Email-based password reset with secure tokens
+- Session security with httponly cookies
+- Input validation and sanitization
 
-## 🎨 Customization
+## 🌐 Technologies Used
 
-### Styling
-- Built with TailwindCSS for easy customization
-- Custom CSS in `public/assets/css/custom.css`
-- Responsive design components
+- **Backend**: PHP 8.x
+- **Database**: MySQL
+- **Frontend**: HTML5, Tailwind CSS, JavaScript
+- **Payment**: Razorpay API
+- **Email**: PHP mail() / SMTP
 
-### Adding Features
-- Follow MVC pattern in `src/` directory
-- Add new models in `src/models/`
-- Create views in `public/`
-- Update database schema in `database/`
+## 📱 Responsive Design
 
-## � Key Pages
+- Desktop: Full sidebar navigation
+- Tablet: Collapsible sidebar
+- Mobile: Slide-in menu with toggle button
 
-### Customer Pages
-- **Homepage** - Hero section with featured products
-- **Product Catalog** - Browse and search products
-- **Product Details** - Individual product pages
-- **Shopping Cart** - Cart management
-- **Checkout** - Order placement with multiple payment options
-- **User Profile** - Account management and address book
-- **Order History** - Track past orders
-- **Wishlist** - Save favorite products
+## 🐛 Troubleshooting
 
-### Admin Pages
-- **Dashboard** - Business overview and metrics
-- **Products** - Product management with image upload
-- **Inventory** - Stock management with alerts
-- **Orders** - Order processing and status updates
-- **Customers** - Customer management
-- **Analytics** - Sales reports and insights
+### Database Connection Issues
+```bash
+# Check MySQL is running
+mysql -u root -p
 
-## � Recent Updates
+# Verify credentials in src/config.php
+```
 
-- ✅ Enhanced admin panel with inventory management and analytics
-- ✅ Wishlist system with database persistence
-- ✅ Improved password reset functionality
-- ✅ Order details modal for admin
-- ✅ Bulk inventory updates
-- ✅ Interactive sales charts
-- ✅ Mobile-responsive design improvements
+### Email Not Sending
+```bash
+# Check Gmail App Password is correct
+# Verify SMTP settings in src/config.php
+# Check logs/emails.log for errors
+```
 
-## 🤝 Contributing
+### Image Upload Issues
+```bash
+# Ensure uploads directory is writable
+chmod 755 public/uploads/products/
+```
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 📝 License
 
-## 📄 License
+This project is created as part of Prodigy InfoTech internship tasks.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 👤 Author
+
+**Mimansa Patle**
+- GitHub: [@MimansaPatle](https://github.com/MimansaPatle)
 
 ## 🙏 Acknowledgments
 
-- TailwindCSS for the beautiful UI components
-- Chart.js for analytics visualizations
-- PHP community for excellent documentation
+- Prodigy InfoTech for the internship opportunity
+- Tailwind CSS for the styling framework
+- Razorpay for payment gateway integration
 
 ## 📞 Support
 
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation in `/docs/`
-- Review the setup guides in the repository
+For issues or questions, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ for local businesses**
+**Note**: Remember to update `src/config.php` with your actual credentials before deploying to production. Never commit sensitive credentials to version control.

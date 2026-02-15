@@ -21,15 +21,11 @@ composer.lock
 # Uploads (keep structure but ignore content)
 uploads/products/*
 !uploads/products/.gitkeep
-public/uploads/products/*
-!public/uploads/products/.gitkeep
 
 # Logs and temporary files
 *.log
 error_log
 logs/
-logs/*
-!logs/.gitkeep
 *.tmp
 
 # Cache and sessions
@@ -41,13 +37,11 @@ sessions/
 .env
 .env.local
 .env.production
-src/config.php.local
+src/config.php
 
-# Database backups and exports
+# Database backups
 *.sql.backup
 *.db.backup
-*.sql.gz
-database_backup_*
 
 # Development and testing files
 test-*.php
@@ -56,24 +50,17 @@ fix-*.php
 setup-*.php
 check-*.php
 diagnose-*.php
-create-admin.php
-setup-database.php
+add-*.php
+create-*.php
+reset-*.php
+run-*.php
+*.bat
 
-# Documentation drafts (keep main docs)
-*_TEMP.md
-*_DRAFT.md
-*_BACKUP.md
-
-# Sensitive data files
-config-local.php
-local-config.php
-private/
-sensitive/
-
-# Node modules (if using any frontend tools)
-node_modules/
-package-lock.json
-
-# Build files
-dist/
-build/
+# Documentation files (keep only README.md)
+*.txt
+*_SETUP.md
+*_GUIDE.md
+*_STATUS.md
+*_COMPLETE.md
+*_JOURNEY.md
+*_TESTING.md

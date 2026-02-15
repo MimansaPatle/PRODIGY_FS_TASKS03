@@ -7,6 +7,8 @@ require_once __DIR__ . '/../../src/models/User.php';
 
 requireAdmin();
 
+$currentPage = 'analytics';
+
 // Get date range from filters
 $dateFrom = $_GET['date_from'] ?? date('Y-m-01'); // First day of current month
 $dateTo = $_GET['date_to'] ?? date('Y-m-d'); // Today
@@ -36,48 +38,12 @@ $dailySales = Order::getDailySales(30);
     <title>Sales Analytics - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../assets/css/custom.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
-        <div class="w-full px-6">
-            <div class="relative flex items-center h-16">
-                <!-- Logo - Left Side -->
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h1 class="text-xl font-bold text-gray-800 tracking-wide">ADMIN - ANALYTICS</h1>
-                </div>
+<body class="bg-gray-50 font-['Inter']">
+    <?php include __DIR__ . '/../../src/includes/admin-sidebar.php'; ?>
 
-                <!-- Navigation - Right Side -->
-                <div class="ml-auto flex items-center space-x-4">
-                    <a href="index.php" class="text-gray-500 hover:text-gray-700 font-medium">Dashboard</a>
-                    <a href="orders.php" class="text-gray-500 hover:text-gray-700 font-medium">Orders</a>
-                    <a href="inventory.php" class="text-gray-500 hover:text-gray-700 font-medium">Inventory</a>
-                    <a href="../index.php" class="text-gray-500 hover:text-gray-700 font-medium">View Store</a>
-                    <a href="../logout.php" class="text-gray-500 hover:text-gray-700 font-medium">Logout</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="w-full px-6 py-8">
+    <main class="lg:ml-72 min-h-screen p-6">
         <div class="max-w-7xl mx-auto">
             
             <!-- Page Header -->
@@ -88,7 +54,7 @@ $dailySales = Order::getDailySales(30);
                 </div>
                 
                 <!-- Date Range Filter -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4">
                     <form method="GET" class="flex items-center space-x-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">From</label>
@@ -111,7 +77,7 @@ $dailySales = Order::getDailySales(30);
 
             <!-- Key Metrics -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +92,7 @@ $dailySales = Order::getDailySales(30);
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-blue-100 text-blue-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +107,7 @@ $dailySales = Order::getDailySales(30);
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-purple-100 text-purple-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,7 +122,7 @@ $dailySales = Order::getDailySales(30);
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-orange-100 text-orange-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,7 +141,7 @@ $dailySales = Order::getDailySales(30);
             <!-- Charts and Data -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                 <!-- Sales Chart -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Daily Sales (Last 30 Days)</h2>
                     <div class="h-64">
                         <canvas id="salesChart"></canvas>
@@ -183,7 +149,7 @@ $dailySales = Order::getDailySales(30);
                 </div>
 
                 <!-- Order Status Breakdown -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Order Status Breakdown</h2>
                     <div class="space-y-4">
                         <?php 
@@ -218,7 +184,7 @@ $dailySales = Order::getDailySales(30);
             <!-- Top Products and Recent Customers -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Top Selling Products -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Top Selling Products</h2>
                     <?php if (empty($topProducts)): ?>
                     <div class="text-center py-8">
@@ -249,7 +215,7 @@ $dailySales = Order::getDailySales(30);
                 </div>
 
                 <!-- Recent Customers -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Customers</h2>
                     <?php if (empty($recentCustomers)): ?>
                     <div class="text-center py-8">
@@ -281,7 +247,7 @@ $dailySales = Order::getDailySales(30);
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
         // Sales Chart

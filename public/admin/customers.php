@@ -6,6 +6,8 @@ require_once __DIR__ . '/../../src/models/Order.php';
 
 requireAdmin();
 
+$currentPage = 'customers';
+
 // Get all customers (non-admin users)
 $customers = User::getAll(['role' => 'customer']);
 ?>
@@ -16,30 +18,18 @@ $customers = User::getAll(['role' => 'customer']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customers - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/custom.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-    <?php include __DIR__ . '/../../src/includes/admin-header.php'; ?>
+<body class="bg-gray-50 font-['Inter']">
+    <?php include __DIR__ . '/../../src/includes/admin-sidebar.php'; ?>
 
-    <div class="container mx-auto px-4 py-8">
+    <main class="lg:ml-72 min-h-screen p-6">
+        <div class="max-w-7xl mx-auto">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Customers</h1>
-            <a href="index.php" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">← Back to Dashboard</a>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="bg-white rounded-2xl shadow-lg p-6">
             <?php if (empty($customers)): ?>
             <div class="text-center py-12">
                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,15 +95,15 @@ $customers = User::getAll(['role' => 'customer']);
             
             <!-- Summary Stats -->
             <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-blue-50 rounded-lg p-4">
+                <div class="bg-blue-50 rounded-2xl p-4">
                     <div class="text-blue-600 text-sm font-medium">Total Customers</div>
                     <div class="text-2xl font-bold text-blue-900"><?= count($customers) ?></div>
                 </div>
-                <div class="bg-green-50 rounded-lg p-4">
+                <div class="bg-green-50 rounded-2xl p-4">
                     <div class="text-green-600 text-sm font-medium">Active Customers</div>
                     <div class="text-2xl font-bold text-green-900"><?= count($customers) ?></div>
                 </div>
-                <div class="bg-purple-50 rounded-lg p-4">
+                <div class="bg-purple-50 rounded-2xl p-4">
                     <div class="text-purple-600 text-sm font-medium">New This Month</div>
                     <div class="text-2xl font-bold text-purple-900">
                         <?php
@@ -128,6 +118,7 @@ $customers = User::getAll(['role' => 'customer']);
             </div>
             <?php endif; ?>
         </div>
-    </div>
+        </div>
+    </main>
 </body>
 </html>

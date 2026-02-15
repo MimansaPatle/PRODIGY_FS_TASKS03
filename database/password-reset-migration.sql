@@ -1,6 +1,4 @@
 -- Add password reset token fields to users table
--- Run this after the main schema.sql
-
 ALTER TABLE users 
 ADD COLUMN reset_token VARCHAR(64) NULL,
 ADD COLUMN reset_token_expiry DATETIME NULL;

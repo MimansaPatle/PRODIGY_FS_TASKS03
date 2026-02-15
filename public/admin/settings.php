@@ -3,6 +3,8 @@ require_once __DIR__ . '/../../src/config.php';
 require_once __DIR__ . '/../../src/auth.php';
 
 requireAdmin();
+
+$currentPage = 'settings';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,32 +13,20 @@ requireAdmin();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - <?= SITE_NAME ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/custom.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-    <?php include __DIR__ . '/../../src/includes/admin-header.php'; ?>
+<body class="bg-gray-50 font-['Inter']">
+    <?php include __DIR__ . '/../../src/includes/admin-sidebar.php'; ?>
 
-    <div class="container mx-auto px-4 py-8">
+    <main class="lg:ml-72 min-h-screen p-6">
+        <div class="max-w-7xl mx-auto">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Settings</h1>
-            <a href="index.php" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">← Back to Dashboard</a>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Store Settings -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <h2 class="text-xl font-bold mb-4">Store Information</h2>
                 <div class="space-y-4">
                     <div>
@@ -55,7 +45,7 @@ requireAdmin();
             </div>
 
             <!-- Email Settings -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <h2 class="text-xl font-bold mb-4">Email Configuration</h2>
                 <div class="space-y-4">
                     <div>
@@ -85,7 +75,7 @@ requireAdmin();
             </div>
 
             <!-- Database Settings -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <h2 class="text-xl font-bold mb-4">Database Information</h2>
                 <div class="space-y-4">
                     <div>
@@ -104,7 +94,7 @@ requireAdmin();
             </div>
 
             <!-- System Tools -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6">
                 <h2 class="text-xl font-bold mb-4">System Tools</h2>
                 <div class="space-y-3">
                     <a href="../test-db.php" class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-center">
@@ -122,6 +112,7 @@ requireAdmin();
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    </main>
 </body>
 </html>
